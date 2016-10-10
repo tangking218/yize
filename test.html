@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="jquery-3.1.0.js"></script>
+</head>
+<body>
+    <div class="logo">
+        <img src="store_logo.png" style="width: 100px;height: 100px">
+    </div>
+    <input type="button" value="点击按钮">
+    <a href="javascipt:void(0)"></a>
+    <!--盛福：鼠标向下滚动时元素fade In 与fade out -->
+<script>
+
+    var checkCodeTime;
+    $(function(){
+        var fbl = $(document.body).outerWidth(true);
+        if(fbl > 1900){
+            $(".foot_popup_up").removeClass("foot_popup_up_small");
+        }else{
+            $(".foot_popup_up").addClass("foot_popup_up_small");
+        }
+        $(window).scroll(function() {
+            if($(document).scrollTop() >= 590){
+                $(".foot_popup_up,.foot_popup").fadeIn();
+            }else{
+                $(".foot_popup_up,.foot_popup").fadeOut();
+            }
+        });
+        $(".foot_popup_up").click(function(){
+            if(fbl > 1900){
+                $(this).stop().animate({
+                    "left" : "-196px"
+                },300,function(){
+                    $(".foot_popup").stop().animate({
+                        "left" : "0px"
+                    },1000);
+                });
+            }else{
+                $(this).stop().animate({
+                    "left" : "-120px"
+                },300,function(){
+                    $(".foot_popup").stop().animate({
+                        "left" : "0px"
+                    },1000);
+                });
+            }
+        });
+        $(".foot_popup_close").click(function(){
+            $(".foot_popup").stop().animate({
+                "left" : "-100%"
+            },1000,function(){
+                $(".foot_popup_up").stop().animate({
+                    "left" : "0px"
+                },300);
+            });
+        });
+    });
+
+</script>
+</body>
+</html>
